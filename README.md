@@ -1,4 +1,4 @@
-# governance-as-code
+# Governance as Code Demo
 
 ### Create namespace for the control plane
 ```
