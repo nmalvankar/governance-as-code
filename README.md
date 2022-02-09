@@ -1,6 +1,6 @@
 # Governance as Code Demo
 
-### Set up the Control plane
+### Install the Control plane
 1. Create namespace for the control plane
 ```
 oc new-project istio-system
@@ -11,7 +11,7 @@ oc new-project istio-system
 oc apply -n istio-system -f controlplane.yaml
 ```
 
-### Set up the bookinfo application
+### Install the bookinfo application
 1. Create a new namespace to run the bookinfo application
 ```
 oc new-project bookinfo
