@@ -23,7 +23,9 @@ oc create -n istio-system -f servicemeshmemberroll-default.yaml
 ### Verify that the ServiceMeshMemberRoll was created successfully
 ```
 oc get smmr -n istio-system
+```
 
+```
 NAME      READY   STATUS       AGE
 default   1/1     Configured   3m22s
 ```
