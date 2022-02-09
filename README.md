@@ -69,4 +69,44 @@ gateway.networking.istio.io/bookinfo-gateway created
 virtualservice.networking.istio.io/bookinfo created
 ```
 
-Set the value for the GATEWAY_URL parameter:
+6. Set the value for the GATEWAY_URL parameter:
+```
+export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
+```
+
+7. Add destination rule to use the bookinfo application
+```
+oc apply -n bookinfo -f bookinfo/destination-rule-all.yaml
+```
+
+You should see output similar to the following:
+```
+destinationrule.networking.istio.io/productpage created
+destinationrule.networking.istio.io/reviews created
+destinationrule.networking.istio.io/ratings created
+destinationrule.networking.istio.io/details created
+```
+
+### Verifying the Bookinfo installation
+1. Verify that all pods are ready with this command
+```
+oc get pods -n bookinfo
+```
+
+All pods should have a status of Running. You should see output similar to the following:
+```
+NAME                             READY   STATUS    RESTARTS   AGE
+details-v1-86dfdc4b95-fr8hm      2/2     Running   0          12m
+productpage-v1-658849bb5-4rcn4   2/2     Running   0          12m
+ratings-v1-76b8c9cbf9-wd2nm      2/2     Running   0          12m
+reviews-v1-58b8568645-rxrjw      2/2     Running   0          12m
+reviews-v2-5d8f8b6775-xhbcs      2/2     Running   0          12m
+reviews-v3-666b89cfdf-jms7s      2/2     Running   0          12m
+```
+
+2. Run the following command to retrieve the URL for the product page:
+```
+echo "http://$GATEWAY_URL/productpage"
+```
+
+3. Copy and paste the output in a web browser to verify the Bookinfo product page is deployed.
