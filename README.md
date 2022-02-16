@@ -110,3 +110,13 @@ echo "http://$GATEWAY_URL/productpage"
 ```
 
 3. Copy and paste the output in a web browser to verify the Bookinfo product page is deployed.
+
+### Create a new branch and push the new policy change
+
+### Setup Git flow configuration
+
+### Create a Pull request, approve it & merge into the main branch
+
+
+
+
