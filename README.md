@@ -1,5 +1,10 @@
 # Governance as Code Demo
 
+### Pre-requisites:
+1. OCP 4.x cluster is up and running
+2. OCP Admin privileges to install the operators (ElasticSearch, Jaeger, Kiali, OpenShift Service Mesh)
+3. [oc](https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.21/x86_64/product-software) CLI has been installed
+
 ### Install the Control plane
 1. Create namespace for the control plane
 ```
