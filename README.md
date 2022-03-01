@@ -24,7 +24,7 @@ oc new-project bookinfo
 
 2. Create ServiceMeshMemberRoll resource to add bookinfo namespace to the service mesh
 ```
-oc create -n istio-system -f servicemeshmemberroll-default.yaml
+oc create -n istio-system -f bookinfo/servicemeshmemberroll-default.yaml
 ```
 
 3. Verify that the ServiceMeshMemberRoll was created successfully
@@ -116,12 +116,21 @@ echo "http://$GATEWAY_URL/productpage"
 
 3. Copy and paste the output in a web browser to verify the Bookinfo product page is deployed.
 
-### Create a new branch and push the new policy change
-TBD
+### Setup branch protection for main branch
+Setup branch protection for your main branch as shown below
 
-### Setup Git flow configuration
-TBD
+
+### Create a new branch and push the new policy change
+As a collaborator, create a new branch to apply a new policy change and push this branch to the remote git repository
+1. Create a new branch locally
+```
+git checkout -b <branch_name>
+```
+
+2. A
+3. 
+
 
 ### Create a Pull request, approve it & merge into the main branch
-TBD
+1. Apply the following 
 
