@@ -4,6 +4,14 @@ metadata:
   namespace: istio-system
   name: basic
 spec:
+  security:
+    dataPlane:
+      mtls: true
+  tracing:
+    sampling: 10000
+    type: Jaeger
+  policy:
+    type: Istiod
   addons:
     grafana:
       enabled: true
@@ -15,11 +23,6 @@ spec:
       enabled: true
     prometheus:
       enabled: true
-  policy:
-    type: Istiod
+  version: v2.1
   telemetry:
     type: Istiod
-  tracing:
-    sampling: 10000
-    type: Jaeger
-  version: v2.1
