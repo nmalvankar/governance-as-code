@@ -141,6 +141,7 @@ metadata:
 spec:
   security:
     dataPlane:
+      automtls: true
       mtls: true
   tracing:
     sampling: 10000
