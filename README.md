@@ -2,8 +2,8 @@
 
 ### Pre-requisites:
 1. OCP 4.x cluster is up and running
-2. OCP Admin privileges to install the operators (ElasticSearch, Jaeger, Kiali, OpenShift Service Mesh)
-3. [oc](https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.21/x86_64/product-software) CLI has been installed
+2. You have OCP Admin privileges / Role bindings to install the Operators (ElasticSearch, Jaeger, Kiali, OpenShift Service Mesh)
+3. [oc](https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.21/x86_64/product-software) CLI installed
 
 ### Install the OpenShift Service Mesh Control plane
 1. Create namespace for the control plane
@@ -11,7 +11,7 @@
 oc new-project istio-system
 ```
 
-2. Create OSSM control plane
+2. Create OSSM control plane with no MTLS for dataplane
 ```
 oc apply -n istio-system -f controlplane.yaml
 ```
