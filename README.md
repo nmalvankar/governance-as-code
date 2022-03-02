@@ -118,7 +118,7 @@ echo "http://$GATEWAY_URL/productpage"
 
 ### Setup branch protection for main branch
 Setup branch protection for your main branch as shown below
-
+![Branch Protection Rule](images/Branch_Protection_Rule.png)
 
 ### Create a new branch and push the new policy change
 As a collaborator, create a new branch to apply a new policy change and push this branch to the remote git repository
