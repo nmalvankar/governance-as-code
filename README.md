@@ -196,5 +196,5 @@ spec:
 
 4. Merge Pull Request
 
-
+![Merge Pull Request](images/MergePullRequest.png)
 
