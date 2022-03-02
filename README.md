@@ -133,7 +133,6 @@ git checkout -b strict-mtls
    a. Update the content of controlplane.yaml with the following
 
 ```
-oc apply -n istio-system -f - <<EOF
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
@@ -162,7 +161,6 @@ spec:
   version: v2.1
   telemetry:
     type: Istiod
-EOF
 ```
    b. Enable strict mode by creating a file peerauthentication.yaml with the following content
 
