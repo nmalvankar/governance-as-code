@@ -179,15 +179,22 @@ spec:
 
 3. Commit and push the new branch to git remote
 
-5. 
 
 
 ### Create a Pull request, approve it & merge into the main branch
 1. As a collaborator, create a new pull request for the approvers to review the  policy change and approve it
 
+![Pull Request](images/Pull_Request.png)
+
 2. As an approver, review the pull request, provide feedback if required and work with the collaborator to close any gaps. 
 
-3. Approve the pull request and merge it with the main branch
+![Review Pull Request](images/ReviewPullRequest.png)
 
-4. This should trigger the pipeline and apply the MTLS policy change to OpenShift Service Mesh in dev environment.
+3. Approve the pull request and merge it with the main branch to trigger the policy change
+
+![Approve Pull Request](images/ApprovePullRequest.png)
+
+4. Merge Pull Request
+
+
 
