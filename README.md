@@ -5,7 +5,7 @@
 2. OCP Admin privileges to install the operators (ElasticSearch, Jaeger, Kiali, OpenShift Service Mesh)
 3. [oc](https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.21/x86_64/product-software) CLI has been installed
 
-### Install the Control plane
+### Install the OpenShift Service Mesh Control plane
 1. Create namespace for the control plane
 ```
 oc new-project istio-system
@@ -16,7 +16,7 @@ oc new-project istio-system
 oc apply -n istio-system -f controlplane.yaml
 ```
 
-### Install the bookinfo application
+### Install the bookinfo application and add it to the service mesh
 1. Create a new namespace to run the bookinfo application
 ```
 oc new-project bookinfo
@@ -118,19 +118,76 @@ echo "http://$GATEWAY_URL/productpage"
 
 ### Setup branch protection for main branch
 Setup branch protection for your main branch as shown below
+
 ![Branch Protection Rule](images/Branch_Protection_Rule.png)
 
 ### Create a new branch and push the new policy change
 As a collaborator, create a new branch to apply a new policy change and push this branch to the remote git repository
 1. Create a new branch locally
 ```
-git checkout -b <branch_name>
+git checkout -b strict-mtls
 ```
 
-2. A
-3. 
+2. Enable Strict MTLS in the Service Mesh  
+
+   a. Update the content of controlplane.yaml with the following
+
+```
+oc apply -n istio-system -f - <<EOF
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  namespace: istio-system
+  name: basic
+spec:
+  security:
+    dataPlane:
+      mtls: true
+  tracing:
+    sampling: 10000
+    type: Jaeger
+  policy:
+    type: Istiod
+  addons:
+    grafana:
+      enabled: true
+    jaeger:
+      install:
+        storage:
+          type: Memory
+    kiali:
+      enabled: true
+    prometheus:
+      enabled: true
+  version: v2.1
+  telemetry:
+    type: Istiod
+EOF
+```
+   b. Enable strict mode by creating a file peerauthentication.yaml with the following content
+
+```
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system
+spec:
+  mtls:
+    mode: STRICT
+```
+
+3. Commit and push the new branch to git remote
+
+5. 
 
 
 ### Create a Pull request, approve it & merge into the main branch
-1. Apply the following 
+1. As a collaborator, create a new pull request for the approvers to review the  policy change and approve it
+
+2. As an approver, review the pull request, provide feedback if required and work with the collaborator to close any gaps. 
+
+3. Approve the pull request and merge it with the main branch
+
+4. This should trigger the pipeline and apply the MTLS policy change to OpenShift Service Mesh in dev environment.
 
