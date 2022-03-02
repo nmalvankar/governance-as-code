@@ -4,9 +4,6 @@ metadata:
   namespace: istio-system
   name: basic
 spec:
-  security:
-    dataPlane:
-      mtls: true
   tracing:
     sampling: 10000
     type: Jaeger
