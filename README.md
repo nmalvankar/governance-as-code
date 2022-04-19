@@ -1,5 +1,5 @@
 # Governance as Code Demo
-
+In this demo we will use OpenShift Service Mesh to demonstrate governance as code 
 ### Pre-requisites:
 1. OCP 4.x cluster is up and running
 2. You have OCP Admin privileges / Role bindings to install the Operators (ElasticSearch, Jaeger, Kiali, OpenShift Service Mesh)
